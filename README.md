@@ -13,6 +13,8 @@ This project predicts wildfire risk at a 1km grid resolution for 7-14 days in ad
 
 ---
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit)](https://wildfire-prediction-cali.streamlit.app)
+
 ## Why Google Earth Engine?
 
 **Google Earth Engine (GEE)** is a planetary-scale geospatial analysis platform that provides:
@@ -189,13 +191,6 @@ By the end of this project, you will have:
 - **Week 3**: Model tuning + spatial validation
 - **Week 4**: Visualization + documentation
 
----
-
-## Next Steps
-
-1. Read `docs/GEE_SETUP.md` to configure Earth Engine
-2. Open `notebooks/01_data_exploration.ipynb` to start
-3. Follow `docs/LEARNING_GUIDE.md` for detailed explanations
 
 ---
 
