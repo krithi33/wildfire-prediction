@@ -481,9 +481,8 @@ with col2:
 
 with col3:
     st.markdown("**🔗 Links**")
-    st.caption("[📄 GitHub Repository](https://github.com/yourusername/wildfire-prediction)")
-    st.caption("[📝 Technical Blog](https://yourblog.com)")
-    st.caption("[💼 LinkedIn](https://linkedin.com/in/yourprofile)")
+    st.caption("[📄 GitHub Repository](https://github.com/krithi33/wildfire-prediction)")
+    st.caption("[💼 LinkedIn](https://linkedin.com/in/krithi-m-s/)")
 
 st.markdown("---")
 st.caption("Built with 🔥 for climate impact | © 2025 Your Name")
