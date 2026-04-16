@@ -1,0 +1,31 @@
+# Large data files (don't upload)
+data/*.csv
+data/*.parquet
+*.h5
+*.pkl
+*.tif
+*.geojson
+
+# EXCEPT the dashboard data (we need this)
+!data/predictions_for_dashboard.csv
+
+# Python cache
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Environment
+venv/
+env/
+.env
+.venv
+
+# OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints
