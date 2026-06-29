@@ -108,79 +108,29 @@ wildfire_prediction/
 
 ---
 
-## Key Technical Concepts (What You'll Learn)
-
-### 1. **Geospatial Data Handling**
-- Working with rasters (gridded satellite imagery)
-- Coordinate reference systems (CRS) and projections
-- Spatial joins and aggregations
-- Handling multi-dimensional arrays (time × lat × lon × bands)
-
-### 2. **Time-Series Features for Spatial Data**
-- Lag features (yesterday's fire → today's risk)
-- Rolling statistics (7-day average temperature)
-- Cyclical encoding (day-of-year as sin/cos)
-- Autoregressive patterns in grid cells
-
-### 3. **Class Imbalance**
-- Fires occur in <1% of grid cells → extreme imbalance
-- Techniques: class weighting, undersampling, focal loss
-- Metrics: AUPRC (not AUROC), precision at high recall
-
-### 4. **Spatial Cross-Validation**
-- Why random splits fail (spatial autocorrelation)
-- Leave-region-out validation
-- Temporal + spatial splits
-
-### 5. **Feature Importance & Interpretability**
-- SHAP values for tree models
-- Partial dependence plots
-- Feature interaction detection
-
----
-
-## Installation & Setup
-
-### Step 1: Install Dependencies
-
-```bash
-pip install --break-system-packages earthengine-api geopandas rasterio xarray pandas numpy scikit-learn lightgbm matplotlib seaborn folium jupyter
-```
-
-### Step 2: Authenticate Google Earth Engine
-
-```bash
-earthengine authenticate
-```
-
-This will open a browser window for you to log in with your Google account and authorize Earth Engine access.
-
-### Step 3: Initialize Earth Engine in Python
-
-```python
-import ee
-ee.Initialize()
-```
-
----
-
 ## Quick Start
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/yourusername/wildfire-prediction
+git clone https://github.com/krithi33/wildfire-prediction
 cd wildfire-prediction
 
 # 2. Install dependencies
 pip install -r requirements.txt
 
-# 3. Authenticate with Google Earth Engine
-import ee
-ee.Authenticate()
+# 3. Authenticate with Google Earth Engine (requires a GEE account)
+earthengine authenticate
 
-# 4. Run notebooks in order or launch dashboard
+# 4. Run notebooks in order from inside the notebooks/ folder, or launch the dashboard directly
 streamlit run app.py
 ```
+
+### Setup & Reproducibility Notes
+
+- **Run notebooks from inside `notebooks/`** — file paths are relative to that folder (e.g. `../data/...`).
+- **Google Earth Engine access required** — `01_data_exploration.ipynb` and `02_feature_engineering.ipynb` call the GEE Python API; you'll need your own GEE-enabled Google account and project.
+- **Some exports require a manual download step** — a few GEE exports (e.g. weather and NDVI CSVs) run as asynchronous tasks and are saved to Google Drive rather than returned directly. The notebook prints the exact filename to download and where to place it before continuing — this is called out inline at each step.
+- **Live dashboard** — if you just want to see results without running the pipeline, the [Streamlit demo](https://wildfire-prediction-cali.streamlit.app) uses pre-computed predictions from `data/predictions_for_dashboard.csv`.
 
 ## 📈 Performance Analysis
 
@@ -248,20 +198,6 @@ test = data[data['date'] >= '2020-08-25']
 - [ ] Multi-region support (Australia, Mediterranean, Amazon)
 - [ ] Mobile app with push notifications
 
-## Learning Approach
-
-This project is designed to be **study material**. Each notebook and script includes:
-
-✅ **Detailed comments** explaining what each function does  
-✅ **Why decisions were made** (e.g., why use AUPRC instead of accuracy?)  
-✅ **Common pitfalls** and how to avoid them  
-✅ **Visualization** of intermediate steps  
-✅ **References** to papers/documentation for deeper learning  
-
-**Philosophy**: Don't just run the code — understand why it works.
-
----
-
 ## Dataset Details
 
 ### Fire Data: NASA FIRMS
@@ -286,28 +222,6 @@ This project is designed to be **study material**. Each notebook and script incl
 - **Source**: Google Earth Engine (`USGS/SRTMGL1_003`)
 - **Resolution**: 30m
 - **What it contains**: Elevation (we derive slope and aspect)
-
----
-
-## Expected Outcomes
-
-By the end of this project, you will have:
-
-1. ✅ A trained model with **AUPRC > 0.3** (baseline is ~0.01 for random)
-2. ✅ **Feature importance** showing temperature and NDVI as top predictors
-3. ✅ **Spatial visualizations** of predicted risk vs actual fires
-4. ✅ **Residual analysis** showing where/when model fails
-5. ✅ A **deployable pipeline**
-
----
-
-## Timeline
-
-- **Week 1**: Data pipeline + EDA
-- **Week 2**: Feature engineering + baseline model
-- **Week 3**: Model tuning + spatial validation
-- **Week 4**: Visualization + documentation
-
 
 ---
 
